@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const db = require('../index');
 
 const Student = db.define('student', {
   firstName: {
@@ -38,3 +39,4 @@ const Student = db.define('student', {
   }
 });
 
+module.exports = Student;

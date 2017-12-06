@@ -5,7 +5,7 @@ const Student = models.Student;
 module.exports = router;
 
 router.get('/', function (req, res, next) {
-  Student.findAll({ where: req.query })
+  Student.findAll()
     .then(students => res.json(students))
     .catch(next);
 });

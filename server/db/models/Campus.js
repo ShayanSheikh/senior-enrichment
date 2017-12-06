@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const db = require('../index');
 
 const Campus = db.define('campus', {
   name: {
@@ -14,5 +15,5 @@ const Campus = db.define('campus', {
   },
   description: {
     type: Sequelize.TEXT,
-  },
+  }
 });

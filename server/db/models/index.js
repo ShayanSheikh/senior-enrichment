@@ -1,6 +1,7 @@
 'use strict';
 
 const db = require('../index');
+const Sequelize = require('sequelize');
 const Student = require('./Student.js');
 const Campus = require('./Campus.js');
 // Require all the models
@@ -9,11 +10,11 @@ const Campus = require('./Campus.js');
 	// Exporting all models from here seems like a good idea!
 
 // This is also probably a good place for you to set up your associations
-Student.belongsToOne(Campus);
+Student.belongsTo(Campus);
 Campus.hasMany(Student);
 
 module.exports = {
-	db: db,
-	Student: Student,
-	Campus: Campus
+	db,
+	Student,
+	Campus
 }
