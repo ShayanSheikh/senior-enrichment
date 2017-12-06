@@ -16,8 +16,8 @@ router.get('/:studentId', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  Student.findOrCreate(req.body)
-    .then(student => res.json(student))
+  Student.findOrCreate({ where: req.body })
+    .then(student => res.json(student[0]))
     .catch(next);
 });
 
