@@ -2,6 +2,7 @@
 const chalk = require('chalk');
 const Sequelize = require('sequelize');
 const pkg = require('../../package.json');
+require('./models');
 
 console.log(chalk.yellow("Opening database connection"));
 
