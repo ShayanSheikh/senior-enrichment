@@ -4,8 +4,8 @@ const db = require('../index');
 const Campus = db.define('campus', {
   name: {
     type: Sequelize.STRING,
+    allowNull: false,
     validate: {
-      allowNull: false,
       notEmpty: true
     }
   },
@@ -17,3 +17,5 @@ const Campus = db.define('campus', {
     type: Sequelize.TEXT,
   }
 });
+
+module.exports = Campus;

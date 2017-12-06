@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const models = require('../db/models');
-const Campus = models.Campus;
+const Campus = require('../db/models/Campus');
 module.exports = router;
 
 router.get('/', (req, res, next) => {
@@ -17,8 +16,9 @@ router.get('/:campusId', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  Campus.findOrCreate(req.body)
-    .then(campus => res.json(campus))
+  console.log(req.body);
+  Campus.findOrCreate({where: req.body})
+    .then(campus => res.json(campus[0]))
     .catch(next);
 });
 
@@ -42,6 +42,6 @@ router.delete('/:campusId', (req, res, next) => {
     .then(article => {
       return article.destroy()
     })
-    .then(res.send(201))
+    .then(res.send(202))
     .catch(next);
 });

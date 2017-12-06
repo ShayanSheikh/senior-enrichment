@@ -13,8 +13,4 @@ const Campus = require('./Campus.js');
 Student.belongsTo(Campus);
 Campus.hasMany(Student);
 
-module.exports = {
-	db,
-	Student,
-	Campus
-}
+module.exports = db;
