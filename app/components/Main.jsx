@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
-import Home from './Home';
+import Navbar from './Navbar';
 import Campuses from './Campuses';
 import Students from './Students';
 import SingleCampus from './SingleCampus';
@@ -19,7 +19,7 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-        <Home />
+        <Navbar />
         <Switch>
           <Route path='/campuses/:campusId' component={SingleCampus}/>
           <Route path='/students/:studentId' component={SingleStudent}/>

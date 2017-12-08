@@ -19,7 +19,7 @@ function SingleCampus(props) {
                 <li>{student.fullName}</li>
               </NavLink>
             )
-          }) 
+          })
         }
         </ul>
       </div>

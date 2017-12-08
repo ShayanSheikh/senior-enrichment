@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
-export default class Home extends Component {
+export default class Navbar extends Component {
   render() {
     return (
       <nav>
