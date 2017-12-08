@@ -4,7 +4,7 @@ const Student = require('../db/models/Student');
 module.exports = router;
 
 router.get('/', function (req, res, next) {
-  Student.findAll()
+  Student.findAll({ include: { all: true } })
     .then(students => res.json(students))
     .catch(next);
 });

@@ -17,6 +17,10 @@ export function getCampuses (campuses) {
   return action;
 }
 
+export function deleteCampus (campus) {
+  const action = { type: DELETE_CAMPUS, campus};
+}
+
 //THUNK CREATORS
 export function fetchCampuses () {
   return function (dispatch) {
@@ -24,6 +28,28 @@ export function fetchCampuses () {
       .then(res => res.data)
       .then(campuses => {
         const action = getCampuses(campuses);
+        dispatch(action);
+      });
+  }
+}
+
+export function addCampus (campus) {
+  return function (dispatch) {
+    return axios.post('/api/campuses', campus)
+      .then(res => res.data)
+      .then(newCampus => {
+        const action = postCampus(newCampus);
+        dispatch(action);
+      });
+  }
+}
+
+export function removeCampus () {
+  return function (dispatch) {
+    return axios.delete('/api/campuses')
+      .then(res => res.data)
+      .then(campus => {
+        const action = postCampus(campus);
         dispatch(action);
       });
   }
@@ -37,6 +63,12 @@ export default function reducer (state = [], action) {
 
     case POST_CAMPUS:
       return [...state, action.campus];
+
+    case DELETE_CAMPUS:
+      let newState = [...state];
+      let ind = newState.indexOf(campus);
+      newState.splice(ind, 1);
+      return newState;
 
     default:
       return state;

@@ -1,14 +1,17 @@
 'use strict'
 import React from 'react'
+import { HashRouter as Router } from 'react-router-dom';
 import {render} from 'react-dom'
 import { Provider } from 'react-redux'
 
 import store from './store'
-import Home from './components/Home'
+import Main from './components/Main'
 
 render (
   <Provider store={store}>
-    <Home/>
+    <Router>
+      <Main/>
+    </Router>
   </Provider>,
   document.getElementById('main')
 )
