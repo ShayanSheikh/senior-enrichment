@@ -1,9 +1,10 @@
 import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { removeCampus } from '../store';
 
 function Campuses(props) {
-  const { campuses } = props;
+  const { campuses, removeCampus } = props;
   return (
     <div>
       <NavLink className="btn" to="/new-campus">
@@ -17,6 +18,7 @@ function Campuses(props) {
                 <NavLink to={`/campuses/${campus.id}`}>
                   <span>{campus.name}</span>
                 </NavLink>
+                <button onClick={() => removeCampus(campus.id)}>X</button>
               </li>
             )
           })
@@ -28,8 +30,16 @@ function Campuses(props) {
 
 const mapStateToProps = function (state) {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Campuses));
+const mapDispatchToProps = function (dispatch) {
+  return {
+    removeCampus (campusId) {
+      dispatch(removeCampus(campusId));
+    }
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Campuses));

@@ -9,12 +9,6 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/:campusId', (req, res, next) => {
-  Campus.findById(req.params.campusId)
-    .then(campus => res.json(campus))
-    .catch(next);
-});
-
 router.post('/', (req, res, next) => {
   Campus.findOrCreate({ where: req.body })
     .then(campus => res.json(campus[0]))
@@ -25,8 +19,8 @@ router.put('/:campusId', (req, res, next) => {
   Campus.findOne({
     where: { id: req.params.campusId }
   })
-    .then(article => {
-      return article.update(req.body)
+    .then(campus => {
+      return campus.update(req.body)
     })
     .then(updated => {
       res.json(updated);
@@ -35,12 +29,10 @@ router.put('/:campusId', (req, res, next) => {
 });
 
 router.delete('/:campusId', (req, res, next) => {
-  Campus.findOne({
-    where: { id: req.params.campusId }
-  })
-    .then(article => {
-      return article.destroy()
+  Campus.findById(req.params.campusId)
+    .then(campus => {
+      return campus.destroy();
     })
-    .then(res.send(202))
+    .then(res.sendStatus(202))
     .catch(next);
 });

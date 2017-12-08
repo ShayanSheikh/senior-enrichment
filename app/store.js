@@ -9,3 +9,5 @@ export default createStore(rootReducer, applyMiddleware(thunkMiddleware, logging
 // export action creators
 export * from './reducers/campuses';
 export * from './reducers/students';
+export * from './reducers/currCampus';
+export * from './reducers/currStudent';

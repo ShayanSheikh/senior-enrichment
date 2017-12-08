@@ -8,12 +8,14 @@ function SingleStudent(props) {
   if(student) {
     return (
       <div>
-        <p>{student.fullName}</p>
-        <p>{student.email}</p>
-        <p>{student.gpa}</p>
-        <NavLink to={`/campuses/${student.campusId}`}>
-          <p>{student.campus.name}</p>
-        </NavLink>
+        <p>Name: {student.fullName}</p>
+        <p>Email: {student.email}</p>
+        <p>GPA: {student.gpa}</p>
+        <p>Campus:
+          <NavLink to={`/campuses/${student.campusId}`}>
+            {student.campus.name}
+          </NavLink>
+        </p>
       </div>
     );
   }

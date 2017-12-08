@@ -3,7 +3,6 @@ import axios from 'axios';
 //ACTION TYPES
 const POST_CAMPUS = 'POST_CAMPUS';
 const GET_CAMPUSES = 'GET_CAMPUSES';
-const EDIT_CAMPUS = 'EDIT_CAMPUS';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
 
 // ACTION CREATORS
@@ -17,8 +16,9 @@ export function getCampuses (campuses) {
   return action;
 }
 
-export function deleteCampus (campus) {
-  const action = { type: DELETE_CAMPUS, campus};
+export function deleteCampus (campusId) {
+  const action = { type: DELETE_CAMPUS, campusId };
+  return action;
 }
 
 //THUNK CREATORS
@@ -33,23 +33,24 @@ export function fetchCampuses () {
   }
 }
 
-export function addCampus (campus) {
+export function addCampus (campus, history) {
   return function (dispatch) {
     return axios.post('/api/campuses', campus)
       .then(res => res.data)
       .then(newCampus => {
         const action = postCampus(newCampus);
         dispatch(action);
+        history.push('/campuses/'+newCampus.id);
       });
   }
 }
 
-export function removeCampus () {
+export function removeCampus (campusId) {
   return function (dispatch) {
-    return axios.delete('/api/campuses')
+    return axios.delete('/api/campuses/'+campusId)
       .then(res => res.data)
-      .then(campus => {
-        const action = postCampus(campus);
+      .then(() => {
+        const action = deleteCampus(campusId);
         dispatch(action);
       });
   }
@@ -66,7 +67,7 @@ export default function reducer (state = [], action) {
 
     case DELETE_CAMPUS:
       let newState = [...state];
-      let ind = newState.indexOf(campus);
+      let ind = newState.findIndex(c => c.id === action.campusId);
       newState.splice(ind, 1);
       return newState;
 

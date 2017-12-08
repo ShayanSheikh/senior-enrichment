@@ -5,6 +5,9 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav>
+        <NavLink className="btn" to="/">
+          <button>Home</button>
+        </NavLink>
         <NavLink className="btn" to="/campuses">
           <button>Campuses</button>
         </NavLink>

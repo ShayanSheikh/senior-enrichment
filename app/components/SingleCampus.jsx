@@ -6,18 +6,21 @@ function SingleCampus(props) {
   const { campuses } = props;
   var campus = campuses.filter(c => c.id === +props.match.params.campusId)[0];
   if (campus) {
+    if(!campus.students) campus.students = [];
     return (
       <div>
         <img src={campus.imageUrl} width="42px"/>
-        <p>{campus.name}</p>
-        <p>{campus.description}</p>
+        <p>Name: {campus.name}</p>
+        <p>Description: {campus.description}</p>
         <ul>
         {
           campus.students.map(student => {
             return (
-              <NavLink to={`/students/${student.id}`} key={student.id}>
-                <li>{student.fullName}</li>
-              </NavLink>
+              <li key={student.id}>
+                <NavLink to={`/students/${student.id}`}>
+                  {student.fullName}
+                </NavLink>
+              </li>
             )
           })
         }
