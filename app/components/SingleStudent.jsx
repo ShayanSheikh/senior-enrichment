@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 function SingleStudent(props) {
   const { student } = props;
-  return (
+  return (student) ?
+  (
     <div>
       <p>Name: {student.fullName}</p>
       <p>Email: {student.email}</p>
@@ -15,7 +16,11 @@ function SingleStudent(props) {
         </NavLink>
       </p>
     </div>
-  );
+  )
+  :
+  (
+    <div> </div>
+  )
 }
 
 const mapStateToProps = function (state, ownProps) {

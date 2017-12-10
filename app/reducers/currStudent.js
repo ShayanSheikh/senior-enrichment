@@ -17,7 +17,7 @@ export function writeStudentLast (last) {
 }
 
 export function writeStudentEmail (email) {
-  return { type: WRITE_STUDENT_Email, email };
+  return { type: WRITE_STUDENT_EMAIL, email };
 }
 
 export function writeStudentGPA (gpa) {
