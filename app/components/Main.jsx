@@ -23,6 +23,8 @@ export default class Main extends Component {
       <div>
         <Navbar />
         <Switch>
+          <Route path='/campuses/:campusId/edit' component={AddCampus} />
+          <Route path='/students/:studentId/edit' component={AddStudent} />          
           <Route path='/campuses/:campusId' component={SingleCampus}/>
           <Route path='/students/:studentId' component={SingleStudent}/>
           <Route path='/new-student' component={AddStudent}/>

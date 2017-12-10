@@ -3,28 +3,25 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function SingleStudent(props) {
-  const { students } = props;
-  var student = students.filter(s => s.id === +props.match.params.studentId)[0];
-  if(student) {
-    return (
-      <div>
-        <p>Name: {student.fullName}</p>
-        <p>Email: {student.email}</p>
-        <p>GPA: {student.gpa}</p>
-        <p>Campus:
-          <NavLink to={`/campuses/${student.campusId}`}>
-            {student.campus.name}
-          </NavLink>
-        </p>
-      </div>
-    );
-  }
-  else return (<div> </div>);
+  const { student } = props;
+  return (
+    <div>
+      <p>Name: {student.fullName}</p>
+      <p>Email: {student.email}</p>
+      <p>GPA: {student.gpa}</p>
+      <p>Campus:
+        <NavLink to={`/campuses/${student.campusId}`}>
+          {student.campus.name}
+        </NavLink>
+      </p>
+    </div>
+  );
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (state, ownProps) {
+  let student = state.students.filter(s => s.id === +ownProps.match.params.studentId)[0];
   return {
-    students: state.students
+    student
   };
 };
 

@@ -37,4 +37,5 @@ const mapStateToProps = function (state) {
   };
 };
 
+
 export default withRouter(connect(mapStateToProps)(SingleCampus));

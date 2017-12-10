@@ -19,6 +19,9 @@ function Students(props) {
                   <span>{student.fullName}</span>
                 </NavLink>
                 <button onClick={() => removeStudent(student.id)}>X</button>
+                <NavLink to={`/students/${student.id}/edit`}>
+                  <button>Edit</button>
+                </NavLink>
               </li>
             )
           })

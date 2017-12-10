@@ -15,6 +15,7 @@ const Campus = db.define('campus', {
   },
   description: {
     type: Sequelize.TEXT,
+    defaultValue: ''
   }
 });
 

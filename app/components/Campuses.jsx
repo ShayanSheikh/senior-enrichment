@@ -18,7 +18,10 @@ function Campuses(props) {
                 <NavLink to={`/campuses/${campus.id}`}>
                   <span>{campus.name}</span>
                 </NavLink>
-                <button onClick={() => removeCampus(campus.id)}>X</button>
+                  <button onClick={() => removeCampus(campus.id)}>X</button>
+                <NavLink to={`/campuses/${campus.id}/edit`}>
+                  <button>Edit</button>
+                </NavLink>
               </li>
             )
           })
