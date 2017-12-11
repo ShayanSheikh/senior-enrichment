@@ -10,7 +10,7 @@ function Campuses(props) {
       <NavLink className="btn" to="/new-campus">
         <button>Add Campus</button>
       </NavLink>
-      <ul>
+      <ul style={{"list-style-type": "none"}}>
         {
           campuses.map( campus => {
             return (
