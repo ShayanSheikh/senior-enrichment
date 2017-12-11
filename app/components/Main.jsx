@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import Navbar from './Navbar';
+import Home from './Home';
 import Campuses from './Campuses';
 import Students from './Students';
 import SingleCampus from './SingleCampus';
@@ -31,6 +32,7 @@ export default class Main extends Component {
           <Route path='/new-campus' component={AddCampus} />
           <Route exact path='/campuses' component={Campuses}/>
           <Route exact path='/students' component={Students}/>
+          <Route path='/' component={Home} />
         </Switch>
       </div>
     )

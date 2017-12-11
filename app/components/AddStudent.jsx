@@ -116,7 +116,8 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     },
     handleSubmit(evt, student) {
       evt.preventDefault();
-      (add) ? dispatch(addStudent(student)) : dispatch(updateStudent(student, ownProps.history));
+      student.campusId = evt.target.campus.value;
+      (add) ? dispatch(addStudent(student, ownProps.history)) : dispatch(updateStudent(student, ownProps.history));
       dispatch(writeStudent({ firstName: '', lastName: '', email: '', gpa: 0, campusId:0 }));
     },
     populateForm(student) {

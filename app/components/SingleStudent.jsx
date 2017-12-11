@@ -3,15 +3,15 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function SingleStudent(props) {
-  const { student } = props;
+  const { student, campus } = props;
   return (student) ?
   (
     <div>
-      <p>Name: {student.fullName}</p>
+      <p>Name: {student.firstName} {student.lastName}</p>
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>
       <p>Campus:
-        <NavLink to={`/campuses/${student.campusId}`}>
+        <NavLink to={`/campuses/${student.campus.id}`}>
           {student.campus.name}
         </NavLink>
       </p>
@@ -24,9 +24,11 @@ function SingleStudent(props) {
 }
 
 const mapStateToProps = function (state, ownProps) {
-  let student = state.students.filter(s => s.id === +ownProps.match.params.studentId)[0];
+  let student = state.students.find(s => s.id === +ownProps.match.params.studentId);
+  let campus = student ?
+    state.campuses.find(c => c.id === student.campusId) : {};
   return {
-    student
+    student, campus
   };
 };
 
