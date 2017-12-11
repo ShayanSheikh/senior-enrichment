@@ -97,7 +97,7 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     handleSubmit(evt, campus) {
       evt.preventDefault();
       (add) ? dispatch(addCampus(campus, ownProps.history)) : dispatch(updateCampus(campus, ownProps.history));
-      dispatch(writeCampus({ name: '', imageUrl: 'goo.gl/2DDCXq', description: '' }));
+      dispatch(writeCampus({ name: '', imageUrl: 'https://www.nationalgeographic.com/content/dam/science/photos/000/009/940.jpg', description: '' }));
     },
     populateForm(campus) {
       dispatch(writeCampus(campus));

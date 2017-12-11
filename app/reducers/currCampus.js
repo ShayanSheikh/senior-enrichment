@@ -22,7 +22,7 @@ export function writeCampusDesc(desc) {
 const initialState = { 
   id: 0, 
   name: '', 
-  imageUrl: 'goo.gl/2DDCXq', 
+  imageUrl: 'https://www.nationalgeographic.com/content/dam/science/photos/000/009/940.jpg', 
   description: '' 
 }
 

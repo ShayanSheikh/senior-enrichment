@@ -16,6 +16,7 @@ function Campuses(props) {
             return (
               <li key={campus.id}>
                 <NavLink to={`/campuses/${campus.id}`}>
+                  <img width='50px' src={campus.imageUrl} />
                   <span>{campus.name}</span>
                 </NavLink>
                   <button onClick={() => removeCampus(campus.id)}>X</button>

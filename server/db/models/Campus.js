@@ -11,7 +11,7 @@ const Campus = db.define('campus', {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue: 'goo.gl/2DDCXq'
+    defaultValue: 'https://goo.gl/w4fXt7'
   },
   description: {
     type: Sequelize.TEXT,
