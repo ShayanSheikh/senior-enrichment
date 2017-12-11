@@ -12,6 +12,9 @@ function SingleCampus(props) {
         <img src={campus.imageUrl} width="42px"/>
         <p>Name: {campus.name}</p>
         <p>Description: {campus.description}</p>
+        <NavLink className="btn" to="/new-student">
+          <button>Add Student</button>
+        </NavLink>
         <ul>
         {
           campus.students.map(student => {
