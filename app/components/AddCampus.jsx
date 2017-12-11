@@ -10,6 +10,7 @@ class AddCampus extends React.Component {
     this.state = {
       dirty: false
     }
+    this.clearForm = props.clearForm;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,6 +25,10 @@ class AddCampus extends React.Component {
       this.setState({ dirty: true });
       this.props.populateForm(this.props.campus);
     }
+  }
+
+  componentWillUnmount() {
+    this.clearForm();
   }
 
   render() {
@@ -101,6 +106,9 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     },
     populateForm(campus) {
       dispatch(writeCampus(campus));
+    },
+    clearForm() {
+      dispatch(writeCampus({ name: '', imageUrl: 'https://www.nationalgeographic.com/content/dam/science/photos/000/009/940.jpg', description: '' }));
     }
   };
 };

@@ -10,6 +10,7 @@ class AddStudent extends React.Component {
     this.state = {
       dirty: false
     }
+    this.clearForm = props.clearForm
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,6 +25,10 @@ class AddStudent extends React.Component {
       this.setState({ dirty: true });
       this.props.populateForm(this.props.student);
     }
+  }
+
+  componentWillUnmount() {
+    this.clearForm();
   }
 
   render () {
@@ -122,6 +127,10 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     },
     populateForm(student) {
       dispatch(writeStudent(student));
+    },
+    clearForm() {
+      console.log("JHERE************");
+      dispatch(writeStudent({ firstName: '', lastName: '', email: '', gpa: 0, campusId: 0 }));
     }
   };
 };

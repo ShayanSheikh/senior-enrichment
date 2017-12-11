@@ -30,8 +30,8 @@ export default class Main extends Component {
           <Route path='/students/:studentId' component={SingleStudent}/>
           <Route path='/new-student' component={AddStudent}/>
           <Route path='/new-campus' component={AddCampus} />
-          <Route exact path='/campuses' component={Campuses}/>
-          <Route exact path='/students' component={Students}/>
+          <Route path='/campuses' component={Campuses}/>
+          <Route path='/students' component={Students}/>
           <Route path='/' component={Home} />
         </Switch>
       </div>
