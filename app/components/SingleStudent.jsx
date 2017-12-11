@@ -11,9 +11,16 @@ function SingleStudent(props) {
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>
       <p>Campus:
-        <NavLink to={`/campuses/${student.campus.id}`}>
-          {student.campus.name}
-        </NavLink>
+        {
+          (campus) ?
+            <NavLink to={`/campuses/${campus.id}`}>
+              {campus.name}
+            </NavLink>
+          :
+            <NavLink to={`/campuses/${student.campus.id}`}>
+              {student.campus.name}
+            </NavLink>
+        }
       </p>
     </div>
   )

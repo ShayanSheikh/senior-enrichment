@@ -129,7 +129,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       dispatch(writeStudent(student));
     },
     clearForm() {
-      console.log("JHERE************");
       dispatch(writeStudent({ firstName: '', lastName: '', email: '', gpa: 0, campusId: 0 }));
     }
   };
