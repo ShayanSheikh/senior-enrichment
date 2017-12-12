@@ -10,6 +10,7 @@ class AddStudent extends React.Component {
     this.state = {
       dirty: false
     }
+    this.add = (this.props.match.path === '/new-student');
     this.clearForm = props.clearForm
   }
 
@@ -28,17 +29,16 @@ class AddStudent extends React.Component {
   }
 
   componentWillUnmount() {
-    this.clearForm();
+    if(!this.add) this.clearForm();
   }
 
   render () {
-    const add = (this.props.match.path === '/new-student');
     const { currStudent, campuses, handleChange, handleSubmit } = this.props;
     return (
       <form onSubmit={(evt) => handleSubmit(evt, currStudent)}>
         <div>
           {
-            (add) ? (<label>Add Student</label>) : (<label>Edit Student</label>)
+            (this.add) ? (<label>Add Student</label>) : (<label>Edit Student</label>)
           }
           <br></br>
           <input
@@ -83,7 +83,7 @@ class AddStudent extends React.Component {
         </div>
         <div>
           {
-            (add) ? (<button type="submit">Add Student</button>) : (<button type="submit">Edit</button>)
+            (this.add) ? (<button type="submit">Add Student</button>) : (<button type="submit">Edit</button>)
           }
         </div>
       </form>
